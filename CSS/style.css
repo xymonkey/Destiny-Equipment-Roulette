@@ -1,3 +1,8 @@
 #authorize-button {
 	border: solid 1px black;
+	width: 100px;
+	height: 20px;
+	margin: 10px;
+	text-align: center;
+	cursor: pointer;
 }

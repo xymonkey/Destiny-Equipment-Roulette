@@ -6,7 +6,7 @@ var accessTokenExpires;
 var APIScope;
 
 function authorize () {
-	localStorage.setItem("BungieAPIState", "" + Base64.encode(Math.random(new Date().getTime())));
+	localStorage.setItem("BungieAPIState", "" + btoa(Math.random(new Date().getTime())));
 	console.log(localStorage.getItem("BungieAPIState"));
 	$.ajax({
 		url: authURL,
@@ -42,4 +42,6 @@ function authorize () {
 	});
 }
 
-$("#authorize-button").click(function(){authorize();});
+$(function(){
+	$("#authorize-button").click(function(){authorize();});
+});
