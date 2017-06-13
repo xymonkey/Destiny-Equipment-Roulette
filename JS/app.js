@@ -5,7 +5,7 @@ var tokenURL = "https://www.bungie.net/Platform/App/GetAccessTokensFromCode/";
 var accessTokenExpires;
 var APIScope;
 
-function authenticate () {
+function authorize () {
 	localStorage.setItem("BungieAPIState", "" + Base64.encode(Math.random(new Date().getTime())));
 	console.log(localStorage.getItem("BungieAPIState"));
 	$.ajax({
@@ -27,7 +27,7 @@ function authenticate () {
 					"X-API-Key": APIKey,
 				},
 				data: {
-					"code": code;
+					"code": code,
 				}
 			}).done(function(json){
 				console.log(json.Response);
@@ -42,4 +42,4 @@ function authenticate () {
 	});
 }
 
-$("#authenticate-button").click(function(){authenticate();});
+$("#authorize-button").click(function(){authorize();});
