@@ -10,6 +10,7 @@ function authorize () {
 	console.log(localStorage.getItem("BungieAPIState"));
 	$.ajax({
 		url: authURL,
+		method: "POST",
 		headers: {
 			"X-API-Key": APIKey,
 			"state": localStorage.getItem("BungieAPIState")
