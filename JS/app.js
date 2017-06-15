@@ -1,6 +1,6 @@
 var APIKey = "62f422f9869847708f9524db355258ef";
 var clientID = 13464;
-var authURL = "https://www.bungie.net/en/OAuth/Authorize";
+var authURL = "https://www.bungie.net/en/OAuth/Authorize" + clientID;
 var tokenURL = "https://www.bungie.net/Platform/App/GetAccessTokensFromCode/";
 var accessTokenExpires;
 var APIScope;
