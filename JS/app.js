@@ -26,26 +26,25 @@ function authorize () {
 
 function postAuthorize ()
 {
-	$("#authorize-label").text = "Authorizing...";
+	$("#authorize-label").text ("Authorizing...");
 	if (urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
 		$.ajax({
+			contentType:"application/json; charset=UTF-8;",
 			method: "POST",
 			url: tokenURL,
 			headers: {
 				"X-API-Key": APIKey,
 			},
-			data: {
-				"code": urlParams["code"],
-			}
+			data: {"code": urlParams["code"]}
 		}).done(function(json){
-			console.log(json.Response);
-			localStorage.setItem("accessToken", json.Response.accessToken.value);
-			localStorage.setItem("refreshToken", json.Response.refreshToken.value);
-			localStorage.setItem("accessTokenExpires", json.Response.accessToken.expires);
+			console.log(json.responseJSON);
+			localStorage.setItem("accessToken", json.responseJSON.accessToken.value);
+			localStorage.setItem("refreshToken", json.responseJSON.refreshToken.value);
+			localStorage.setItem("accessTokenExpires", json.responseJSON.accessToken.expires);
 			//Make sure to check that the scope is correct for the api access we need to function.
-			APIScope = json.Response.scope;
-			$("#authorize-label").text = "Authorization complete";
+			APIScope = json.responseJSON.scope;
+			$("#authorize-label").text("Authorization complete");
 		});
 	}			
 }
