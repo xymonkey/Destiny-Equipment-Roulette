@@ -36,7 +36,7 @@ function postAuthorize ()
 			headers: {
 				"X-API-Key": APIKey,
 			},
-			data: {"code": urlParams["code"]}
+			data: JSON.stringify({code: urlParams["code"]})
 		}).done(function(json){
 			console.log(json.responseJSON);
 			localStorage.setItem("accessToken", json.responseJSON.accessToken.value);
