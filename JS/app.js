@@ -53,7 +53,7 @@ $(function(){
 	if(urlParams["code"] && urlParams["state"] && urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
 		console.log("post authorize");
-		postAuthorize ();
+		setTimeout(postAuthorize,5000);
 	}
 	$("#authorize-button").click(function(){authorize();});
 });
