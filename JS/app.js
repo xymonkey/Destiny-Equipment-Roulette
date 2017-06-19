@@ -34,7 +34,7 @@ function postAuthorize ()
 			method: "POST",
 			url: tokenURL,
 			headers: {
-				"X-API-Key": APIKey,
+				"X-API-Key": APIKey
 			},
 			data: JSON.stringify({code: urlParams["code"]})
 		}).done(function(json){
