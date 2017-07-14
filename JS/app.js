@@ -33,6 +33,7 @@ function postAuthorize ()
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			dataType:"json",
+			contentType: 'application/json; charset=UTF-8',
 			method: "POST",
 			url: tokenURL,
 			headers: {
