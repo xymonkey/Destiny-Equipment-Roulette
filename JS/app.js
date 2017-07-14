@@ -29,7 +29,7 @@ function postAuthorize ()
 	$("#authorize-label").text ("Authorizing...");
 	if (urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
-		var data = {code: urlParams["code"]};
+		var data = {"code": urlParams["code"]};
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			dataType:"json",
