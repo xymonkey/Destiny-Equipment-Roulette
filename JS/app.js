@@ -49,7 +49,7 @@ function postAuthorize ()
 			//Make sure to check that the scope is correct for the api access we need to function.
 			APIScope = json.responseJSON.scope;
 			$("#authorize-label").text("Authorization complete");
-		});*/
+		});
 	}			
 }
 
