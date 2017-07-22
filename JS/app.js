@@ -1,6 +1,6 @@
 var APIKey = "62f422f9869847708f9524db355258ef";
 var clientID = 13464;
-var authURL = "https://www.bungie.net/en/OAuth/Authorize?response_type=token&client_id=" + clientID;
+var authURL = "https://www.bungie.net/en/OAuth/Authorize?response_type=code&redirect_uri=https://xymonkey.github.io/Destiny-Equipment-Roulette/app.html&client_id=" + clientID;
 var tokenURL = "https://www.bungie.net/Platform/App/GetAccessTokensFromCode/";
 var accessTokenExpires;
 var APIScope;
@@ -29,9 +29,7 @@ function postAuthorize ()
 	$("#authorize-label").text ("Authorizing...");
 	if (urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
-		console.log(urlParams["token"]);
-		/*var data = {code: urlParams["code"], client_id: clientID};
-		console.log(JSON.stringify(data));
+		var data = {code: urlParams["code"], client_id: clientID};
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			dataType:"json",
