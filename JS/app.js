@@ -1,7 +1,7 @@
 var APIKey = "62f422f9869847708f9524db355258ef";
 var clientID = 13464;
-var authURL = "https://www.bungie.net/en/OAuth/Authorize?response_type=code&redirect_uri=https://xymonkey.github.io/Destiny-Equipment-Roulette/app.html&client_id=" + clientID;
-var tokenURL = "https://www.bungie.net/Platform/App/OAuth/Token";
+var authURL = "https://www.bungie.net/en/OAuth/Authorize/?response_type=code&redirect_uri=https://xymonkey.github.io/Destiny-Equipment-Roulette/app.html&client_id=" + clientID;
+var tokenURL = "https://www.bungie.net/Platform/App/OAuth/Token/";
 var accessTokenExpires;
 var APIScope;
 var urlParams;
