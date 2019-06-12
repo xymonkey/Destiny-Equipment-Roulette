@@ -20,7 +20,6 @@ var urlParams;
 
 function authorize () {
 	localStorage.setItem("BungieAPIState", "" + btoa(Math.random(new Date().getTime())));
-	console.log(localStorage.getItem("BungieAPIState"));
 	window.location = authURL +"&state=" + localStorage.getItem("BungieAPIState");
 }
 
@@ -29,20 +28,17 @@ function postAuthorize ()
 	$("#authorize-label").text ("Authorizing...");
 	if (urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
-		var data = {code: urlParams["code"], client_id: clientID};
+		var data = {code: urlParams["code"], grant_type:authorization_code};
 		$.ajaxSetup({cache: false});
 		$.ajax({
-			dataType:"json",
-			contentType: 'application/json; charset=UTF-8',
 			processData: false,
 			method: "POST",
 			url: tokenURL,
 			headers: {
-				"X-API-Key": APIKey
+				"Content-Type":"application/x-www-form-urlencoded",
 			},
 			data: JSON.stringify(data)
 		}).done(function(json){
-			console.log(json.responseJSON);
 			localStorage.setItem("accessToken", json.responseJSON.accessToken.value);
 			localStorage.setItem("refreshToken", json.responseJSON.refreshToken.value);
 			localStorage.setItem("accessTokenExpires", json.responseJSON.accessToken.expires);
