@@ -28,7 +28,7 @@ function postAuthorize ()
 	$("#authorize-label").text ("Authorizing...");
 	if (urlParams["state"] == localStorage.getItem("BungieAPIState"))
 	{
-		var data = {code: urlParams["code"], grant_type:"authorization_code"};
+		tokenURL+="client_id="+clientID+"&grant_type=authorization_code&code="+urlParams["code"];
 		$.ajaxSetup({cache: false});
 		$.ajax({
 			processData: false,
@@ -38,7 +38,6 @@ function postAuthorize ()
 				"Content-Type":"application/x-www-form-urlencoded",
 				"X-API-Key":APIKey
 			},
-			data: JSON.stringify(data)
 		}).done(function(json){
 			localStorage.setItem("accessToken", json.responseJSON.accessToken.value);
 			localStorage.setItem("refreshToken", json.responseJSON.refreshToken.value);
